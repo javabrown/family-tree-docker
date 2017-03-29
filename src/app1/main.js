@@ -1,9 +1,9 @@
-require.config({
+/*require.config({
     paths: {
         'jquery': 'vendor/jquery',
         'raphael': '//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min'
     }
-});
+});*/
 
 
 require([
