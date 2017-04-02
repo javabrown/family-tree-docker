@@ -17,6 +17,22 @@ $( document ).ready(function() {
 	
 	$("#add-new-child").bind('click', addNewChild);
 
+	
+        var chart_config = readDataFromLocalStore();
+        
+        if(chart_config){
+        	alert('data initiatlized from local store' + chart_config);
+        }
+        else{
+        	//chart_config = initWithDummyJson();
+        	loadJSON('js/tree-data.json', function(data){ alert(JSON.stringify(chart_config));
+        		chart_config = data;
+				new Treant( chart_config );
+				
+				alert('chart_config set' + chart_config);
+        	});
+        }	
+		
 });
 
 
