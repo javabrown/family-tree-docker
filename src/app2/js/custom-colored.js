@@ -117,6 +117,8 @@
 				// Antoher approach, same result
 				// JSON approach
 
+/*				
+				
 var chart_config = readDataFromLocalStore();
 
 if(chart_config){
@@ -130,7 +132,7 @@ else{
 	});
 }
 
-
+*/
 
 function loadJSON(jsonFile, callback) {
     var xobj = new XMLHttpRequest();
