@@ -123,9 +123,26 @@ if(chart_config){
 	alert('data initiatlized from local store' + chart_config);
 }
 else{
-	chart_config = initWithDummyJson();
+	//chart_config = initWithDummyJson();
+	loadJSON('js/tree-data.json', function(data){
+		chart_config = data;
+		alert('chart_config set' + chart_config);
+	});
 }
 
+
+
+function loadJSON(jsonFile, callback) {
+    var xobj = new XMLHttpRequest();
+        xobj.overrideMimeType("application/json");
+    xobj.open('GET', jsonFile, true);
+    xobj.onreadystatechange = function () {
+          if (xobj.readyState == 4 && xobj.status == "200") {
+            callback(xobj.responseText);
+          }
+    };
+    xobj.send(null);  
+}
 
 function storeDataToLocalStore(jsonData){
 	localStorage.setItem("JSON_DATA", JSON.stringify(jsonData));
@@ -155,7 +172,6 @@ function initWithDummyJson()
 					nodeStructure: {
 						id: 1,
 						text: {
-							id: 1,
 							name: "Mark Hill",
 							title: "Bangalore, India",
 							contact: "Tel: 01 213 123 134",
@@ -165,7 +181,6 @@ function initWithDummyJson()
 							{   
 							    id:2,
 								text:{
-									id:2,
 									name: "Joe Linux",
 									title: "Bangalore, India",
 								},
@@ -175,7 +190,6 @@ function initWithDummyJson()
 									{
 										id:3,
 										text:{
-											id: 3,
 											name: "Ron Blomquist",
 											title: "White Plains, New York"
 										},
@@ -186,7 +200,6 @@ function initWithDummyJson()
 									{
 										id:4,
 										text:{
-											id:4,
 											name: "Michael Rubin",
 											title: "CEO, NY Times, USA",
 											contact: "we@aregreat.com"
@@ -201,7 +214,6 @@ function initWithDummyJson()
 								childrenDropLevel: 2,
 								id:5,
 								text:{
-									id:5,
 									name: "Linda May",
 									title: "North Brunswick, NJ",
 								},
@@ -209,9 +221,8 @@ function initWithDummyJson()
 								image: "images/icon-person1.png",
 								children: [
 									{
-									   id:6,
+									    id:6,
 										text:{
-											id:6,
 											name: "Alice Lopez",
 											title: "Los Angeles, CA"
 										},
@@ -221,7 +232,6 @@ function initWithDummyJson()
 											{
 											    id:7,
 												text:{
-													id:7,
 													name: "Mr Alberto",
 													title: "London, UK"
 												},
@@ -230,7 +240,6 @@ function initWithDummyJson()
 													{
 													    id:8,
 														text:{
-															id:8,
 															name: "Mr Calberto",
 															title: "Sideny, Austrelia"
 														},
@@ -244,7 +253,6 @@ function initWithDummyJson()
 									{
 										id:9,
 										text:{
-											id:9,
 											name: "Mary Johnson",
 											title: "Nice, France"
 										},
@@ -255,7 +263,6 @@ function initWithDummyJson()
 									{
 										id:10,
 										text:{
-											id:10,
 											name: "Kirk Douglas",
 											title: "Paris, France"
 										},
@@ -269,7 +276,6 @@ function initWithDummyJson()
 							{
 								id:11,
 								text:{
-									id: 11,
 									name: "John Green",
 									title: "Chief accounting officer",
 									contact: "Tel: 01 213 123 134",
@@ -280,7 +286,6 @@ function initWithDummyJson()
 									{
 										id:12,
 										text:{
-											id: 12,
 											name: "Erica Reel",
 											title: "New York, USA"
 										},

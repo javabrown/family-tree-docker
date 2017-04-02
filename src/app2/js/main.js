@@ -1,6 +1,7 @@
 
 
 $( document ).ready(function() {
+	
     $(".node-menu").bind('click', function (e) {
          
 		 var id = $(this).parent().find('.node-menu').attr('id');
@@ -23,8 +24,9 @@ function traverse(jsonObj, id, callback) {
     if( typeof jsonObj == "object" ) {
         $.each(jsonObj, function(k,v) {
             // k is either an array index or object key
-			
-			if( k == "text" && jsonObj[k].id == id){  alert(JSON.stringify(jsonObj) );
+			//alert(jsonObj.id);
+			//if( k == "text" && jsonObj[k].id == id){
+			if(jsonObj.id == id){	
 			   return callback(jsonObj);
 			}
 			else{
@@ -48,7 +50,7 @@ function addNewChild(){
 		    
 			if(node){
 	             var timestamp = new Date().getUTCMilliseconds();
-                 alert(timestamp + "  " + node)
+                 //alert(timestamp + "  " + node)
                 
                  node.children.push(
                                       {
@@ -63,8 +65,8 @@ function addNewChild(){
                                       }
                  );
                   
-                 storeDataToLocalStore(chart_config); alert('saved' + node);
-				 alert(id +",  " + cname + ",   "+cdescription + "   ==>"+ JSON.stringify(bla));
+                 storeDataToLocalStore(chart_config);
+				 //alert(id +",  " + cname + ",   "+cdescription + "   ==>"+ JSON.stringify(bla));
             }
 	
 	});
