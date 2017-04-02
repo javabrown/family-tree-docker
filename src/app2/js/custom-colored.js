@@ -124,7 +124,7 @@ if(chart_config){
 }
 else{
 	//chart_config = initWithDummyJson();
-	loadJSON('js/tree-data.json', function(data){
+	loadJSON('js/tree-data.json', function(data){ alert(JSON.stringify(chart_config));
 		chart_config = data;
 		alert('chart_config set' + chart_config);
 	});
