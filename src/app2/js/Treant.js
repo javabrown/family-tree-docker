@@ -1099,7 +1099,8 @@
 
 				span = document.createElement('span');
                 span.className = "node-menu";
-				 
+				span.id = this.text['id'];
+				
                 span.appendChild( document.createTextNode("⛯") );
 				node.appendChild(span);
 					
@@ -1108,7 +1109,7 @@
 					image = document.createElement('img');
 
 					image.src = this.image;
-					node.appendChild(image);
+					node.appendChild(image);//alert(this.text['id']);
 				}
 
 				// TEXT
