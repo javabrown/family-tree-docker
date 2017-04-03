@@ -117,7 +117,7 @@
 				// Antoher approach, same result
 				// JSON approach
 
-/*				
+				
 				
 var chart_config = readDataFromLocalStore();
 
@@ -125,14 +125,16 @@ if(chart_config){
 	alert('data initiatlized from local store' + chart_config);
 }
 else{
-	//chart_config = initWithDummyJson();
-	loadJSON('js/tree-data.json', function(data){ alert(JSON.stringify(chart_config));
+	chart_config = initWithDummyJson();
+	/*loadJSON('js/tree-data.json', function(data){ alert(JSON.stringify(chart_config));
 		chart_config = data;
 		alert('chart_config set' + chart_config);
-	});
+	});*/
+	
+	
 }
 
-*/
+
 
 function loadJSON(jsonFile, callback) {
     var xobj = new XMLHttpRequest();
@@ -174,6 +176,7 @@ function initWithDummyJson()
 					nodeStructure: {
 						id: 1,
 						text: {
+							id: 1,
 							name: "Mark Hill",
 							title: "Bangalore, India",
 							contact: "Tel: 01 213 123 134",
@@ -183,6 +186,7 @@ function initWithDummyJson()
 							{   
 							    id:2,
 								text:{
+									id:2,
 									name: "Joe Linux",
 									title: "Bangalore, India",
 								},
@@ -192,19 +196,9 @@ function initWithDummyJson()
 									{
 										id:3,
 										text:{
+											id:3,
 											name: "Ron Blomquist",
 											title: "White Plains, New York"
-										},
-										HTMLclass: 'light-gray',
-										image: "images/icon-person1.png",
-										children: []
-									},
-									{
-										id:4,
-										text:{
-											name: "Michael Rubin",
-											title: "CEO, NY Times, USA",
-											contact: "we@aregreat.com"
 										},
 										HTMLclass: 'light-gray',
 										image: "images/icon-person1.png",
@@ -214,8 +208,9 @@ function initWithDummyJson()
 							},
 							{
 								childrenDropLevel: 2,
-								id:5,
+								id:4,
 								text:{
+									id:4,
 									name: "Linda May",
 									title: "North Brunswick, NJ",
 								},
@@ -223,81 +218,16 @@ function initWithDummyJson()
 								image: "images/icon-person1.png",
 								children: [
 									{
-									    id:6,
+									    id:5,
 										text:{
+											 id:5,
 											name: "Alice Lopez",
 											title: "Los Angeles, CA"
 										},
 										HTMLclass: 'blue',
 										image: "images/icon-person1.png",
-										children: [
-											{
-											    id:7,
-												text:{
-													name: "Mr Alberto",
-													title: "London, UK"
-												},
-												image: "images/icon-person1.png",
-												children: [
-													{
-													    id:8,
-														text:{
-															name: "Mr Calberto",
-															title: "Sideny, Austrelia"
-														},
-														image: "images/icon-person1.png",
-														children: []
-													}
-												]									
-											}
-										]							
+										children: []							
 									},
-									{
-										id:9,
-										text:{
-											name: "Mary Johnson",
-											title: "Nice, France"
-										},
-										HTMLclass: 'blue',
-										image: "images/icon-person1.png",
-										children: []
-									},
-									{
-										id:10,
-										text:{
-											name: "Kirk Douglas",
-											title: "Paris, France"
-										},
-										HTMLclass: 'blue',
-										image: "images/icon-person1.png",
-										children: []
-									}
-									
-								]
-							},
-							{
-								id:11,
-								text:{
-									name: "John Green",
-									title: "Chief accounting officer",
-									contact: "Tel: 01 213 123 134",
-								},
-								HTMLclass: 'gray',
-								image: "images/icon-person1.png",
-								children: [
-									{
-										id:12,
-										text:{
-											name: "Erica Reel",
-											title: "New York, USA"
-										},
-										link: {
-											href: "http://www.google.com"
-										},
-										HTMLclass: 'gray',
-										image: "images/icon-person1.png",
-										children: []
-									}
 								]
 							}
 						]

@@ -1099,7 +1099,7 @@
 
 				span = document.createElement('span');
                 span.className = "node-menu";
-				span.id = this.text['id'];
+				span.id = this.text['id']+"";//this.id;alert("Data ID => " + this.id);
 				
                 span.appendChild( document.createTextNode("⛯") );
 				node.appendChild(span);

@@ -2,6 +2,8 @@
 
 $( document ).ready(function() {
 	
+	new Treant( chart_config );
+	
     $(".node-menu").bind('click', function (e) {
          
 		 var id = $(this).parent().find('.node-menu').attr('id');
@@ -23,13 +25,11 @@ $( document ).ready(function() {
 function traverse(jsonObj, id, callback) {
     if( typeof jsonObj == "object" ) {
         $.each(jsonObj, function(k,v) {
-            // k is either an array index or object key
-			//alert(jsonObj.id);
-			//if( k == "text" && jsonObj[k].id == id){
-			if(jsonObj.id == id){	
-			   return callback(jsonObj);
-			}
-			else{
+			if( k == "text" && jsonObj[k].id == id){
+				//alert( JSON.stringify(jsonObj) );
+				return callback(jsonObj);
+			} 
+			else{ 
                traverse(v, id, callback);
 			}
         });
@@ -39,39 +39,45 @@ function traverse(jsonObj, id, callback) {
     }
 }
 
+function getUDID(){
+	var d = new Date();
+    var id = d.getSeconds()+""+d.getHours()  + "" + d.getMinutes()+""+d.getYear()+""+d.getMonth()+""+d.getDate();
+	return id;
+}
 
 function addNewChild(){
 
 	var id =  $("#cid").val();
 	var cname = $("#cname").val();
 	var cdescription = $("#cdescription").val();
-	
+	 
     traverse(chart_config.nodeStructure, id, function(node){
 		    
 			if(node){
-	             var timestamp = new Date().getUTCMilliseconds();
+	             var timestamp = getUDID();
                  //alert(timestamp + "  " + node)
                 
                  node.children.push(
                                       {
-                                          text:{
-                  							id: timestamp,
+										  
+                                          'text':{
+											 id: ""+timestamp,
                                              name: cname,
                                              title: cdescription
                                           },
-                                          HTMLclass: 'light-gray',
-                                          image: "images/icon-person1.png",
-										  children: []
+                                          'HTMLclass': 'light-gray',
+                                          'image': "images/icon-person1.png",
+										  'children': []
                                       }
                  );
                   
                  storeDataToLocalStore(chart_config);
-				 //alert(id +",  " + cname + ",   "+cdescription + "   ==>"+ JSON.stringify(bla));
+				 //alert("Saved ==> " + timestamp +",  " + cname + ",   "+cdescription + "   ==>"+ JSON.stringify(chart_config));
+				 
             }
 	
 	});
-    	
-	
+    
 }
 
 function findObjectById(root, id) {
