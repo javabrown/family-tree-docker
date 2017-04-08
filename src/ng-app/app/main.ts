@@ -3,13 +3,19 @@ import {bootstrap} from 'angular2/platform/browser';
 import { Router, RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 
 import {Hello} from    './directives/hello';
-import {Tree} from    './components/tree';
+import {Tree} from    './components/tree/tree';
+
+import { AppModule } from './app.module';
 
 @Component({
 	selector: 'my-app',
 	 
 	directives: [Hello, ROUTER_DIRECTIVES],
-	template: '<h1>Hello {{a}}</h1> <br/> <input [(ngModel)]="a" value="{{a}}" hello /> '
+	template: `
+	<h1>Hello {{a}}</h1> <br/> <input [(ngModel)]="a" value="{{a}}" hello />
+	<br/>
+	<a href="#tree">Tree</a>
+	`
 })
 
 @RouteConfig([
@@ -19,6 +25,8 @@ import {Tree} from    './components/tree';
 ])
 export class MyComponent {
     a : "Raja Khan";
+	
+
 };
 
-bootstrap(MyComponent, [])
+bootstrap(AppModule, [])
