@@ -119,14 +119,14 @@
 
 				
 				
-var chart_config = readDataFromLocalStore();
-
-if(chart_config){
+var chart_config = chart_config010;//readDataFromLocalStore();
+ alert(chart_config010);
+if(false && chart_config){
 	alert('data initiatlized from local store' + chart_config);
 }
 else{
-	chart_config = initWithDummyJson();
-	/*loadJSON('js/tree-data.json', function(data){ alert(JSON.stringify(chart_config));
+	//chart_config = initWithDummyJson();
+	/*loadJSON( function(data){ alert(JSON.stringify(data));
 		chart_config = data;
 		alert('chart_config set' + chart_config);
 	});*/
@@ -134,9 +134,20 @@ else{
 	
 }
 
+  function loadJSON(callback) {
+		var xobj = new XMLHttpRequest();
+			xobj.overrideMimeType("application/json");
+		xobj.open('GET', 'js/tree-data.json', true); // Replace 'my_data' with the path to your file
+		xobj.onreadystatechange = function () {
+			  if (xobj.readyState == 4 && xobj.status == "200") {
+				// Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+				callback(xobj.responseText);
+			  }
+		};
+		xobj.send(null);  
+   }
 
-
-function loadJSON(jsonFile, callback) {
+/*function loadJSON(jsonFile, callback) {
     var xobj = new XMLHttpRequest();
         xobj.overrideMimeType("application/json");
     xobj.open('GET', jsonFile, true);
@@ -146,7 +157,7 @@ function loadJSON(jsonFile, callback) {
           }
     };
     xobj.send(null);  
-}
+}*/
 
 function storeDataToLocalStore(jsonData){
 	localStorage.setItem("JSON_DATA", JSON.stringify(jsonData));
@@ -206,6 +217,9 @@ function initWithDummyJson()
 									}
 								]
 							},
+{id:"1.1",  text:{  id:"1.1", name: "Mr. Nizamuddin Ahmed & Mumanima",  title: "-" }, HTMLclass: "blue", image: "images/icon-person1.png", children: [] },
+							
+							
 							{
 								childrenDropLevel: 2,
 								id:4,
